@@ -17,5 +17,7 @@ SELECT Data FROM bi_consultor;
 -- Exibir a tabela bi_consultor com a nova coluna NewData
 SELECT * FROM bi_consultor;
 
+COPY bi_consultor TO '/Users/batistajunior/Downloads/tabela_bi_consultor.csv' DELIMITER ',' CSV HEADER;
+
 na parte do consumo do postgres para o power bi, houve um erro de configuração, mas foi em virtude da minha máquina ser um sistma macos ao qual mesmo utilizando o virtual parallels o firewall não permitiu o consumo, todavia não impossibilitou a análise de dados no power bi. Pois fiz a ingestão manual dos dados.
  
