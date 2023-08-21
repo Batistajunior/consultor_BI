@@ -3,19 +3,34 @@
 primeiramente utilizei o pentaho para fazer o ETL os dados em excel cada tabela foi extraido pelo step microsoft excel input depois de feito utilizei o step multiway merge join, depois o select values 1, 2, 3, 4 e 5 em alternancia com o calculator 1,2,3 e 4 feito isso utilizei o step microsoft excel writer para a saída dos dados tratados e por fim o table output para fazer a ingestão dos dados tratados para o postgres. 
 No postgres fiz a união das colunas datedat e data para fazer a analise codigo utilizado:  
 -- Adicionar a coluna NewData à tabela bi_consultor
+
+
+
 ALTER TABLE bi_consultor
 ADD COLUMN NewData DATE;
 
 -- Atualizar a coluna NewData com a combinação das datas de DateDat e Data
+
+
+
 UPDATE bi_consultor
 SET NewData = DateDat;
 
 -- Inserir os valores da coluna Data na coluna NewData para as próximas linhas
+
+
+
 INSERT INTO bi_consultor (NewData)
 SELECT Data FROM bi_consultor;
 
 -- Exibir a tabela bi_consultor com a nova coluna NewData
+
+
+
+
 SELECT * FROM bi_consultor;
+
+
 
 COPY bi_consultor TO '/Users/batistajunior/Downloads/tabela_bi_consultor.csv' DELIMITER ',' CSV HEADER;
 
